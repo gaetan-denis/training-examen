@@ -7,6 +7,7 @@ if (!isset($_SESSION['userid'])) {
 }
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/lib/lib.php';
+require_once __DIR__ . 'lib/db.php';
 
 $connection=connection();
 
