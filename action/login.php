@@ -15,3 +15,21 @@
  * L'utilisateur sera redirigé vers la page de profil en cas de succès à la connexion avec le message "Bienvenue <login>", sinon vers le formulaire de login avec le message d'échec précisé plus haut.
  *
  */
+
+if (!empty($_POST['login']) && !empty($_POST['pwd'])) {
+
+    $connection = connection();
+    $request = $connection->prepare('SELECT * FROM user WHERE login = ?');
+    $request->execute([$_POST['login']]);
+    $user = $request->fetchObject();
+    if (password_verify($_POST['pwd'], $user->pwd)) {
+        $update = $connection->prepare('UPDATE user SET lastlogin = NOW() WHERE id = ?');
+        $update->execute([$user->id]);
+        $_SESSION['userid'] = $user->id;
+        header('Location: index.php');
+        $_SESSION['alert'] = 'Utilisateur ' . $_POST['login']  . ' connecté avec succès';
+        $_SESSION['alert_level'] = 'success';
+    } else {
+        echo "Paramètres invalides!";
+    }
+}

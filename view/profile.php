@@ -27,4 +27,39 @@
  *
  */
 
-echo 'profile';
+if (empty($_SESSION['userid'])) {
+    header('Location: index.php?page=view/user/login');
+    die;
+}
+
+$connection = connection();
+
+$request = $connection->prepare("SELECT * FROM user WHERE id = ?");
+$request->execute([$_SESSION['userid']]);
+$user = $request->fetchObject();
+
+if (!is_a($request, 'PDOStatement') || !is_object($user)) {
+    header('Location: index.php');
+    die;
+}
+
+?>
+<h2>Profil</h2>
+<table class="table" style="max-width:600px;">
+    <tr>
+        <th>Identifiant</th>
+        <td><?=$user->login?></td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td><?=$user->email?></td>
+    </tr>
+    <tr>
+        <th>Membre depuis</th>
+        <td><?=$user->created?></td>
+    </tr>
+    <tr>
+        <th>Dernière connexion</th>
+        <td><?=$user->lastlogin?></td>
+    </tr>
+</table>

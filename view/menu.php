@@ -32,7 +32,7 @@
             <?php if (!empty($_SESSION['userid'])) { ?>
         <li><a href="index.php?source=view/logout">Delog</a></li>
             <?php } else { ?>
-        <li><a href="index.php?page=view/user/login">Login</a></li>
+        <li><a href="index.php?source=view/login">Login</a></li>
             <?php } ?></li>
     </ul>
 </nav>

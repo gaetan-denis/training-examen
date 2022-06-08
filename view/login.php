@@ -16,12 +16,12 @@
 ?>
 
 <h2>Identification</h2>
-<form action="">
+<form action="index.php?source=action/login" method="post">
     <label for="login">Identifiant</label>
     <input type="text" class="form-control" id="login" name="login" required>
     <label for="pwd">Mot de passe</label>
     <input type="password" class="form-control" id="pwd" name="pwd" required>
     <input type="submit" class="btn btn-primary">
 </form>
-<a href="">Création de compte</a>
+<a href="index.php?source=view/signup">Création de compte</a>
 

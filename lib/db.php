@@ -25,7 +25,7 @@ function connection()
         return $connection;
     } else {
         try {
-            $connection = new PDO('mysql:dbname=' . 'DB_NAME' . ';host=' . 'DB_HOST' . ';charset=utf8', 'DB_USER', 'DB_PASSWORD');
+            $connection = new PDO('mysql:dbname=' . DB_NAME . ';host=' . DB_HOST . ';charset=utf8', DB_USER, DB_PASSWORD);
             $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $exception) {
             die ('Erreur: ' . $exception->getMessage());
@@ -33,5 +33,3 @@ function connection()
         return $connection;
     }
 }
-$connection=connection();
-var_dump($connection);

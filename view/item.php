@@ -16,4 +16,22 @@
  *
  */
 
-echo 'item';
+$connection = connection();
+$tbody = '';
+$item = $connection->query("SELECT * FROM item ORDER BY name", PDO::FETCH_OBJ);
+foreach ($item as $items) {
+    $body .= '<option value="' . $items>id . '">' . $items->name . '</option>';
+}
+
+<thead>
+        <tr>
+
+            <th>Marque</th>
+            <th>Nom</th>
+            <th>Prix TVAC</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?=$tbody?>
+    </tbody>
+</table>
