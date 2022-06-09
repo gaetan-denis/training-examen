@@ -62,4 +62,8 @@ if (!is_a($request, 'PDOStatement') || !is_object($user)) {
         <th>Dernière connexion</th>
         <td><?=$user->lastlogin?></td>
     </tr>
+    <tr>
+        <th>Image</th>
+        <td><?=$user->image?></td>
+    </tr>
 </table>
